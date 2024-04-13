@@ -14,6 +14,7 @@
 
 1. 基础
    - 会写程序
+   - 掌握相关工作的**技术栈**的要求
 2. 数据结构和算法
    - 会写几万行的大程序
 3. 计算机原理和计算机系统结构
@@ -71,17 +72,29 @@
 
 - 暂时没有系统学习
 
+#### Java
+
+- 《Java核心技术·卷I》
+
 #### Web
 
-- [ ] [MDN Web Docs: MDN 网络开发入门手册](https://developer.mozilla.org/zh-CN/docs/Learn)
+- [x] [MDN Web Docs: MDN 网络开发入门手册](https://developer.mozilla.org/zh-CN/docs/Learn)
 
-#### 设计模式
-
-- [ ] 《Head First Design Patterns 2nd ed.》
+  > Web知识（html、css、JavaScript）从入门到适应。顺便了解Vue.js、Django等。
+  >
+  > （2024年4月13日学完）
+  >
+  > - [x] HTML
+  > - [x] CSS
+  > - [x] JavaScript
+  > - [x] 客户端框架，及其代表——Vue.js
+  > - [x] 服务器端网络编程
 
 ### 2. 数据结构与算法
 
-- [ ] 《算法导论》第4版
+- [ ] 《算法》第4版——初步
+
+- [ ] 《算法导论》第4版——进阶
 
 ### 3. 计算机原理和计算机系统结构
 
@@ -124,3 +137,22 @@ Berkeley 作为著名开源数据库 postgres 的发源地也不遑多让，[UCB
 #### 并行与分布式系统
 
 - [ ] [分布式系统](https://csdiy.wiki/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/MIT6.824/)
+
+## 四、常见技术栈
+
+### Python开发工程师
+
+> 来源于：易道博识-HR
+
+- Python
+- Web：Flask，FastAPI
+- 数据库：MySQL、Redis
+- 项目部署：Docker、K4S
+- 项目管理：Git、CI/CD、GitLab
+- Linux
+- 流量控制：
+
+### 成长路线：
+
+1. 一般的小公司都是走项目经理的路线；
+2. 大公司：技术专家。
