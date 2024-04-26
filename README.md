@@ -38,7 +38,7 @@
 - [x] IDE (Integrated Development Environment)：集成开发环境，VS Code
 - [x] [Vim](https://csdiy.wiki/%E5%BF%85%E5%AD%A6%E5%B7%A5%E5%85%B7/Vim/)
 
-- [x] [Git](必学工具/Git.md)
+- [x] Git
 
 - [x] GitHub
 
@@ -100,9 +100,7 @@
 
 ### 2. 数据结构与算法
 
-- [ ] 《算法》第4版——初步
-
-- [ ] 《算法导论》第4版——进阶
+- [ ] 《算法导论》第3版和第4版——主要是学习
 
 ### 3. 计算机原理和计算机系统结构
 
@@ -145,12 +143,13 @@ Berkeley 作为著名开源数据库 postgres 的发源地也不遑多让，[UCB
 #### 并行与分布式系统
 
 - [ ] [分布式系统](https://csdiy.wiki/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/MIT6.824/)
+- [ ] 《凤凰架构：构建可靠的大型分布式系统》：简单了解架构的信息
 
 ## 四、常见技术栈
 
 ### Python开发工程师
 
-> 来源于：易道博识-HR
+> 来源于：易道博识-陈普阳
 
 - Python
 - Web：Flask，FastAPI
