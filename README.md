@@ -154,7 +154,7 @@ Berkeley 作为著名开源数据库 postgres 的发源地也不遑多让，[UCB
 - Python
 - Web：Flask，FastAPI
 - 数据库：MySQL、Redis
-- 项目部署：Docker、K4S
+- 项目部署：Docker、K8S
 - 项目管理：Git、CI/CD、GitLab
 - Linux
 - 流量控制：
