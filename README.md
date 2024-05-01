@@ -1,27 +1,36 @@
 # CS 学习规划
 
 > 我的 CS 学习的规划，其实也是我的 CS 学习的回忆。
-
-作为计算机专业的学生，找工作时才发现自己所学的技能如此欠缺。回顾过往，我的学习之路犯过不少错误。接下来，我想系统地弥补这些欠缺的知识。但面对如此庞杂的知识，我深知需要一个清晰明确的学习规划，才不至于在茫然和焦虑中继续犯错。参照一位[大佬](https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/)的笔记，我制定了自己的 CS 学习规划。
+>
+> 作为计算机专业的学生，找工作时才发现自己所学的技能如此欠缺。回顾过往，我的学习之路犯过不少错误。接下来，我想系统地弥补这些欠缺的知识。但面对如此庞杂的知识，我深知需要一个清晰明确的学习规划，才不至于在茫然和焦虑中继续犯错。参照一位[大佬](https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/)的笔记，我制定了自己的 CS 学习规划。
+>
+> 每个人都有自己的起点，自己和自己比，和自己同条件的人比。
 
 ## 一、前言
 
 ### 1. 目标
 
-成为一个合格的计算机工程师
+成为一个合格的五级计算机工程师：
+
+> 一名合格的五级软件工程师，首先应该是一个技术熟手，在工作中经历过了一定的历练，所以可以在不需要别人的指导下，就能独立完成安排的工作任务。
+> 比如上级/需求方给他安排了一个功能需求，他能够充分的理解这个需求背景和目的、以及能给出实现方案，并知道找公司的哪些人提供相应的资源和支持，然后能主动的推动资源来协助自己完成这个需求，最后实现成功上线。
 
 ### 2. 总体路径
 
 1. 基础
    - 会写程序
    - 掌握相关工作的**技术栈**的要求
+   
 2. 数据结构和算法
    - 会写几万行的大程序
+   
 3. 计算机原理和计算机系统结构
    - 会写有效（效率较高）的程序
+   
 4. 应用类计算机课程
    - 会写实用的程序（学习如何将一个生活中的问题，编程一个计算机可以解决的问题）
-   - 例如：NLP、数据库、计算机控制、计算机视觉等。
+   
+     > 例如：NLP、数据库、计算机控制、计算机视觉等。
 
 **注：以下内容是不全面，更加全面的内容值得参考[大佬](https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/)的笔记**
 
@@ -29,34 +38,41 @@
 
 ### 1. 基础工具
 
-- [x] [MIT-Missing-Semester](https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/MIT-Missing-Semester/) 
-- [x] [学会提问](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
-- [x] 翻墙
+- [MIT-Missing-Semester](https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/MIT-Missing-Semester/) 
 
-- [x] 命令行：[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)、[Shell 脚本教程](https://www.shellscript.sh/)
+  - 目的：系统性地学习计算机入门课。
+  - 完成状态：&#x2714;
+- [学会提问](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
 
-- [x] IDE (Integrated Development Environment)：集成开发环境，VS Code
-- [x] [Vim](https://csdiy.wiki/%E5%BF%85%E5%AD%A6%E5%B7%A5%E5%85%B7/Vim/)
+  - 目的：询问问题时所需要知道的常识。
+  - 完成状态：&#x2714;
+- 翻墙
 
-- [x] Git
-
-- [x] GitHub
-
-  其他后续补充……
+  - 目的：Google搜索和一些工具使用的必要条件。
+  - 完成状态：&#x2714;
+- 命令行：[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)、[Shell 脚本教程](https://www.shellscript.sh/)
+  - 目的：了解Linux命令行的必要内容。
+  - 完成状态：&#x2714;
+- IDE (Integrated Development Environment，集成开发环境)：VS Code
+  - 目的：学习一件趁手的工具进行软件开发。
+  - 完成状态：&#x2716;
+- [Vim](https://csdiy.wiki/%E5%BF%85%E5%AD%A6%E5%B7%A5%E5%85%B7/Vim/)
+  - 目的：进行代码编写时的有力工具。
+  - 完成状态：&#x2714;
+- Git和GitHub
+  - 目的：进行版本控制的有力工具。
+  - 完成状态：&#x2714;
 
 ### 2. 环境配置
 
-#### PC 端环境配置
+#### 开发环境配置
 
-- [x] Windows：Scoop
+- Windows：Scoop
+- Linux：Ubuntu
 
-  如果遇到其他的系统，参考[CS学习规划](https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/)
+#### 服务器环境配置
 
-#### 服务器端环境配置
-
-同上，因为没有遇到，暂时不管。
-
-## 三、课程地图
+## 三、学习路线
 
 ### 1. 编程基础
 
@@ -96,17 +112,20 @@
 
 #### Linux
 
-- [ ] 《Linux命令行大全（第2版）》——入门Linux的命令，最好能清楚一些
-
 ### 2. 数据结构与算法
 
-- [ ] 《算法导论》第3版和第4版——主要是学习
+> 比较重要的一点在于学好了这个才好进入大厂，后面才有希望。
+
+- [ ] 《算法导论》第3版和第4版——主要是学习要用的
+- [ ] 
 
 ### 3. 计算机原理和计算机系统结构
 
 #### 计算机系统导论
 
 - [ ] [CMU CS15213: CSAPP](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CSAPP/)
+  - 有一部分内容是已经学过了，重复学习的意义不大，中文版本的课程内容没有更新完。
+  - 后续需要跟着什么做是一个问题。
 
 #### 体系结构入门
 
@@ -158,7 +177,7 @@ Berkeley 作为著名开源数据库 postgres 的发源地也不遑多让，[UCB
 - 数据库：MySQL、Redis
 - 项目部署：Docker、K8S
 - 项目管理：Git、CI/CD、GitLab
-- Linux
+- Linux：
 - 流量控制：
 
 ### 成长路线：
