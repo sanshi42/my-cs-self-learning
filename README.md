@@ -4,7 +4,8 @@
 >
 > 作为计算机专业的学生，找工作时才发现自己所学的技能如此欠缺。回顾过往，我的学习之路犯过不少错误。接下来，我想系统地弥补这些欠缺的知识。但面对如此庞杂的知识，我深知需要一个清晰明确的学习规划，才不至于在茫然和焦虑中继续犯错。参照一位[大佬](https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/)的笔记，我制定了自己的 CS 学习规划。
 >
-> 每个人都有自己的起点，自己和自己比，和自己同条件的人比。
+> - 每个人都有自己的起点，自己和自己比，和自己同条件的人比。
+> - 用听课代替看书。
 
 ## 一、前言
 
@@ -39,7 +40,6 @@
 ### 1. 基础工具
 
 - [MIT-Missing-Semester](https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/MIT-Missing-Semester/) 
-
   - 目的：系统性地学习计算机入门课。
   - 完成状态：&#x2714;
 - [学会提问](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
@@ -61,7 +61,8 @@
   - 完成状态：&#x2714;
 - Git和GitHub
   - 目的：进行版本控制的有力工具。
-  - 完成状态：&#x2714;
+  - 完成状态：
+    - &#x2714;
 
 ### 2. 环境配置
 
@@ -76,111 +77,75 @@
 
 ### 1. 编程基础
 
-#### Shell
+- Python：
+  - 目的：掌握进阶的Python编程知识。
+  - 完成状态：
+    - 阅读《流畅的Python》第二版：&#x2714;
 
-- [x] [Shell 脚本教程](https://www.shellscript.sh/)
+- C++
+  - 暂时没有系统学习&#x2753;
 
-#### Python
+- Java
+  - 《Java核心技术·卷I》&#x2716;
 
-- [x] 《流畅的Python》第二版
+- Web
+  - 目的：掌握基础的Web开发相关知识。
+  - 完成状态：
+    - [MDN Web Docs: MDN 网络开发入门手册](https://developer.mozilla.org/zh-CN/docs/Learn)：&#x2714;
 
-#### C++
-
-- 暂时没有系统学习
-
-#### Java
-
-- 《Java核心技术·卷I》
-
-#### Web
-
-- [x] [MDN Web Docs: MDN 网络开发入门手册](https://developer.mozilla.org/zh-CN/docs/Learn)
-
-  > Web知识（html、css、JavaScript）从入门到适应。顺便了解Vue.js、Django等。
-  >
-  > （2024年4月13日学完）
-  >
-  > - [x] HTML
-  > - [x] CSS
-  > - [x] JavaScript
-  > - [x] 客户端框架，及其代表——Vue.js
-  > - [x] 服务器端网络编程
-
-#### MySQL
-
-- [ ] 入门：《SQL必知必会（第5版）》
-
-#### Linux
+- MySQL
+  - 目的：掌握基础的SQL语言的知识。
+  - 完成状态：
+    - 《SQL必知必会（第5版）》：&#x2714;
 
 ### 2. 数据结构与算法
 
-> 比较重要的一点在于学好了这个才好进入大厂，后面才有希望。
-
-- [ ] 《算法导论》第3版和第4版——主要是学习要用的
-- [ ] 
+- 算法
+  - 目的：掌握必要的算法知识，以便于开发合理的程序。
+  - 完成状态：
+    - 《算法导论》第3版：&#x2716;
 
 ### 3. 计算机原理和计算机系统结构
 
-#### 计算机系统导论
+- 体系结构
+  - 目的：从零开始深入理解计算机的体系结构（包括硬件和软件）。
+  - 完成状态：
+    - 学习入门课程[Coursera: Nand2Tetris](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/)并完成相关作业：&#x2716;
+    - 学习进阶课程[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)并完成相关作业：&#x2716;
 
-- [ ] [CMU CS15213: CSAPP](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CSAPP/)
-  - 有一部分内容是已经学过了，重复学习的意义不大，中文版本的课程内容没有更新完。
-  - 后续需要跟着什么做是一个问题。
+- 计算机系统基础
+  - 目的：掌握基础的计算机原理和计算机系统结构知识。
+  - 完成状态：
+    - 学习课程并完成相关的项目[CMU CS15213: CSAPP](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/CSAPP/)：&#x2716;
+  
+- 操作系统
+  - 目的：没有什么能比自己写个内核更能加深对操作系统的理解了。
+  
+  - 完成状态：
+    - 学习课程并完成相关的项目[CS162: Operating System](https://csdiy.wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CS162/)
+    
+      > 该课程难度可能比较大，时间上的开销也是比较大的，量力而行。
+  
+- 计算机网络
+  - 目的：没有什么能比自己写个 TCP/IP 协议栈更能加深对计算机网络的理解了。
+  - 完成状态：
+    - 《自顶向下方法》和[配套教程](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/topdown/)。
+    - 使用[Stanford CS144: Computer Network](计算机网络/CS144.md)实现整个 TCP/IP 协议栈。
+  
+- 分布式系统
 
-#### 体系结构入门
-
-- [ ] [Coursera: Nand2Tetris](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/)
-
-#### 体系结构进阶
-
-- [ ] [CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)
-
-#### 操作系统
-
-> 没有什么能比自己写个内核更能加深对操作系统的理解了。
-
-暂未确定。
-
-#### 计算机网络
-
-> 没有什么能比自己写个 TCP/IP 协议栈更能加深对计算机网络的理解了。
-
-- [ ] 《自顶向下方法》和[配套教程](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/topdown/)
-
-- [ ] [Stanford CS144: Computer Network](计算机网络/CS144.md)：实现整个 TCP/IP 协议栈。
+  - 目的：学习分布式和并行的相关知识。
+  - 完成状态：
+    - [分布式系统](https://csdiy.wiki/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/MIT6.824/)
 
 ### 4. 应用类计算机课程
 
-#### 数据库系统
+- 数据库系统
 
-> 没有什么能比自己写个关系型数据库更能加深对数据库系统的理解了。
+  > 没有什么能比自己写个关系型数据库更能加深对数据库系统的理解了。
 
-CMU 的著名数据库神课 [CMU 15-445: Introduction to Database System](数据库系统/15445.md) 会通过 4 个 Project 带你为一个用于教学的关系型数据库 [bustub](https://github.com/cmu-db/bustub) 添加各种功能。实验的评测框架也免费开源了，非常适合大家自学。此外课程实验会用到 C++11 的众多新特性，也是一个锻炼 C++ 代码能力的好机会。
+- 微服务架构
 
-Berkeley 作为著名开源数据库 postgres 的发源地也不遑多让，[UCB CS186: Introduction to Database System](数据库系统/CS186.md) 会让你用 Java 语言实现一个支持 SQL 并发查询、B+ 树索引和故障恢复的关系型数据库。
-
-#### 并行与分布式系统
-
-- [ ] [分布式系统](https://csdiy.wiki/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/MIT6.824/)
-- [x] 《凤凰架构：构建可靠的大型分布式系统》
-  - 简单了解微服务架构的信息
-  - 已经学完：34:04:58
-
-## 四、常见技术栈
-
-### Python开发工程师
-
-> 来源于：易道博识-陈普阳
-
-- Python
-- Web：Flask，FastAPI
-- 数据库：MySQL、Redis
-- 项目部署：Docker、K8S
-- 项目管理：Git、CI/CD、GitLab
-- Linux：
-- 流量控制：
-
-### 成长路线：
-
-1. 一般的小公司都是走项目经理的路线；
-2. 大公司：技术专家。
+  - 目的：开发工作中经常使用的架构，需要简单了解。
+  - 完成状态：
+    - 《凤凰架构：构建可靠的大型分布式系统》
