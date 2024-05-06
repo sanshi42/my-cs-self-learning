@@ -111,8 +111,9 @@
   - 目的：从零开始深入理解计算机的体系结构（包括硬件和软件）。
   - 完成状态：
     - 学习入门课程[Coursera: Nand2Tetris](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/)并完成相关作业：&#x2716;
+    - 阅读书籍《计算机系统要素：从零开始构建现代计算机》
     - 学习进阶课程[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)并完成相关作业：&#x2716;
-
+  
 - 计算机系统基础
   - 目的：掌握基础的计算机原理和计算机系统结构知识。
   - 完成状态：
@@ -130,7 +131,7 @@
   - 目的：没有什么能比自己写个 TCP/IP 协议栈更能加深对计算机网络的理解了。
   - 完成状态：
     - 《自顶向下方法》和[配套教程](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/topdown/)。
-    - 使用[Stanford CS144: Computer Network](计算机网络/CS144.md)实现整个 TCP/IP 协议栈。
+    - 使用[Stanford CS144: Computer Network](https://csdiy.wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/CS144/)实现整个 TCP/IP 协议栈。
   
 - 分布式系统
 
@@ -148,4 +149,4 @@
 
   - 目的：开发工作中经常使用的架构，需要简单了解。
   - 完成状态：
-    - 《凤凰架构：构建可靠的大型分布式系统》
+    - 《凤凰架构：构建可靠的大型分布式系统》&#x2714;
