@@ -71,7 +71,7 @@
   - 如何学习：
     - 书籍-[《Pro Git》](https://git-scm.com/book/zh/v2)
 - Docker和K8s
-  - 目的：配置环境和企业级部署的能力
+  - 为什么学：配置环境和企业级部署的能力
   - 完成状态：&#x2716;
 
 ### 2. 环境配置
@@ -150,15 +150,18 @@
 
 - [DevOps工程师](https://devopscube.com/become-devops-engineer/)
 
-  - 目的：成为四级工程师的必要之路。
-
+  - 为什么学：成为四级工程师的必要之路。
   - 完成状态：
 
-    - 了解微服务架构
-      - 目的：开发工作中经常使用的架构，需要简单了解。
+    - 微服务架构
+      - 为什么学：开发工作中经常使用的架构，需要简单了解。
       - 完成状态：《凤凰架构：构建可靠的大型分布式系统》&#x2714;
-
     - [How to Learn Kubernetes (Complete Roadmap & Resources)](https://devopscube.com/learn-kubernetes-complete-roadmap/#)——[中文版本](https://zhuanlan.zhihu.com/p/590493078)
+    - Kubernetes
+      - 为什么学：
+      - 完成状态
+        - 书籍-《》
+        - 书籍-《The Kubernetes Book: 2024 Edition》
 
 - 数据库系统
   > 没有什么能比自己写个关系型数据库更能加深对数据库系统的理解了。
