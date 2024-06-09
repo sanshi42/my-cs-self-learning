@@ -74,14 +74,37 @@
   - 为什么学：配置环境和企业级部署的能力
   - 完成状态：&#x2716;
 
-### 2. 环境配置
+### 2. 应用工具
 
-#### 开发环境配置
+#### 开发环境
 
 - Windows：Scoop
-- Linux：Ubuntu
 
-#### 服务器环境配置
+- Linux学习路径：开始学习2024年5月30日，一直按照这些书来完成就行了，第二本书可能有点多余。这两本书都买了。
+
+  ``` mermaid
+  graph LR
+  0("鸟哥的Linux私房菜：入门篇")-->1(Linux命令行与shell脚本编程指南)-->2("鸟哥的Linux私房菜：服务器架设篇")
+  1-->3(跟我一起写Makefile)
+  ```
+
+- Makefile学习
+
+  - 这部分的学习需要等到shell的命令已经初步学完之后。j
+
+#### 数据库工具
+
+- Redis：
+  - [菜鸟教程简单入门](https://www.runoob.com/redis/redis-intro.html)&#x2714;
+  - [菜鸟教程Python redis 使用介绍](https://www.runoob.com/w3cnote/python-redis-intro.html)&#x2714;
+
+#### 其他学习
+
+- SSE（Server Sent Events）：
+  - [Server-Sent Events 教程](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)&#x2714;
+  - [MDN 使用服务器发送事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events)&#x2714;
+- LangChain：
+  - LangChain
 
 ## 三、学习路线
 
@@ -160,8 +183,13 @@
     - Kubernetes
       - 为什么学：
       - 完成状态
-        - 书籍-《》
-        - 书籍-《The Kubernetes Book: 2024 Edition》
+        - 书籍-《The Kubernetes Book: 2024 Edition》&#x2714;
+  
+- 操作系统的网络
+
+  - 为什么学：因为使用的工具的原因，需要频繁地访问外网，但如何配置好网络是一个大问题，否则我的docker永远访问不了镜像网络。因此有必要学习一下相关的知识和内容。
+  - 完成状态：
+    - 《鸟哥的Linux私房菜-服务器架设篇》——这本书暂时没有电子版，因此难免需要自己买一本
 
 - 数据库系统
   > 没有什么能比自己写个关系型数据库更能加深对数据库系统的理解了。
