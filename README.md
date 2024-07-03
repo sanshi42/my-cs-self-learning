@@ -16,5 +16,6 @@
 
 一定要找到合适自己的那条路啊。
 
+另外，可参考的另一个[网站](https://hackway.org/docs/cs/intro)
 
-
+关于产品的内容：<https://www.rongpm.com/rrpl/elevator-pitch.html>

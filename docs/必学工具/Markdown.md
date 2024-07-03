@@ -10,4 +10,4 @@
 
 ## 资源
 
-- 网站：[Markdown Rules](https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md) 和 [Markdown 简体中文与西文混排要点][cn_en_mixed_typography]
+- 网站：[Markdown Rules](https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md)、[Markdown 简体中文与西文混排要点](https://github.com/selfteaching/markdown-writing-with-mixed-cn-en)

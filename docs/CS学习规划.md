@@ -22,86 +22,52 @@
 
 翻墙：Google搜索和一些工具使用的必要条件。
 
-命令行：了解Linux命令行的必要内容。[命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
+命令行：了解Linux命令行的必要内容。
 
-教程-[Shell 脚本教程](https://www.shellscript.sh/)
+[Shell](必学工具/Shell.md)：编写必要的脚本的基础。
 
-- 书籍-《Linux命令行与Shell脚本编程大全（第四版）》
+[VScode](必学工具/VScode.md)：IDE (Integrated Development Environment，集成开发环境）：学习一件趁手的工具进行软件开发。
 
-IDE (Integrated Development Environment，集成开发环境)&#x2714;
-- 为什么学：学习一件趁手的工具进行软件开发。配置好了相关的快捷键。
-- 如何学习：
-  - 工具-VS Code及相关配置
+[Vim](必学工具/Vim.md)：进行代码编写时的有力工具。
 
-Vim
+[Makefile](必学工具/Makefile.md)：这部分的学习需要等到shell的命令已经初步学完之后。等到要用的时候学习也是可以的。
 
-- 为什么学：进行代码编写时的有力工具。
-- 如何学习：
-  - 文章-[Vim 从入门到精通](https://gitlab.com/wsdjeg/vim-galore-zh_cn)
-  - 书籍-《Vim实用技巧》（微信读书）
+[Linux](必学工具/Linux.md)：程序员必学的一个操作系统内容。
 
 ### 2. 应用工具
 
-#### 开发环境
+开发环境
 
-- Windows：Scoop
+- Windows：使用 Scoop 管理足够。
 
-- Linux学习路径：开始学习2024年5月30日，一直按照这些书来完成就行了，第二本书可能有点多余。这两本书都买了。
-
-  ``` mermaid
-  graph LR
-  0("鸟哥的Linux私房菜：入门篇")-->1(Linux命令行与shell脚本编程指南)-->2("鸟哥的Linux私房菜：服务器架设篇")
-  1-->3(跟我一起写Makefile)
-  ```
-
-- Makefile学习
-
-  - 这部分的学习需要等到shell的命令已经初步学完之后。j
-
-#### 数据库工具
+数据库工具
 
 - Redis：
-  - [菜鸟教程简单入门](https://www.runoob.com/redis/redis-intro.html)&#x2714;
-  - [菜鸟教程Python redis 使用介绍](https://www.runoob.com/w3cnote/python-redis-intro.html)&#x2714;
+  - [菜鸟教程简单入门](https://www.runoob.com/redis/redis-intro.html)
+  - [菜鸟教程Python redis 使用介绍](https://www.runoob.com/w3cnote/python-redis-intro.html)
+- MySQL：掌握基础的SQL语言的知识。
+  - 《SQL必知必会（第5版）》
 
-#### 其他学习
+其他学习
 
 - SSE（Server Sent Events）：
-  - [Server-Sent Events 教程](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)&#x2714;
-  - [MDN 使用服务器发送事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events)&#x2714;
-- LangChain：
-  - LangChain
+  - [Server-Sent Events 教程](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
+  - [MDN 使用服务器发送事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
 ## 学习路线
 
 ### 1. 编程基础
 
-- Python：
-  - 为什么学：掌握进阶的Python编程知识。
-  - 如何学习：
-    - 阅读《流畅的Python》第二版：&#x2714;
-- C++
-  - 暂时没有系统学习&#x2753;
-- Java
-  - 《Java核心技术·卷I》&#x2716;
-- Web
-  - 为什么学：掌握基础的Web开发相关知识。
-  - 如何学习：
-    - [MDN Web Docs: MDN 网络开发入门手册](https://developer.mozilla.org/zh-CN/docs/Learn)：&#x2714;
-    - [FastAPI官网：教程-用户指南](https://fastapi.tiangolo.com/zh/)&#x2714;
-- MySQL
-  - 为什么学：掌握基础的SQL语言的知识。
-  - 如何学习：
-    - 《SQL必知必会（第5版）》：&#x2714;
+- [Python](编程入门/Python.md)
+- C++：暂时没有系统学习
+- Java：《Java核心技术·卷I》
+- Web：掌握基础的Web开发相关知识。
 
 ### 2. 数据结构与算法
 
-- 算法
-  - 为什么学：掌握必要的算法知识，以便于开发合理的程序。
-  - 如何学习：
-    - 《算法导论》第3版：&#x2716;
+- [算法导论](数据结构与算法/算法导论.md)
 
-### 3. 计算机原理和计算机系统结构
+### 3. 计算机系统结构
 
 - 体系结构
 
@@ -109,7 +75,7 @@ Vim
   - 如何学习：
     - 学习入门课程[Coursera: Nand2Tetris](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/)并完成相关作业：&#x2716;
     - 阅读书籍《计算机系统要素：从零开始构建现代计算机》
-    - 学习进阶课程[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)并完成相关作业：&#x2716;
+    - 学习进阶课程[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)并完成相关作业：
 
 - 计算机系统基础
 
