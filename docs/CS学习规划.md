@@ -34,7 +34,7 @@
 
 [Linux](必学工具/Linux.md)：程序员必学的一个操作系统内容。
 
-### 2. 应用工具
+### 应用工具
 
 开发环境
 
@@ -75,8 +75,7 @@
   - 如何学习：
     - 学习入门课程[Coursera: Nand2Tetris](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T/)并完成相关作业：&#x2716;
     - 阅读书籍《计算机系统要素：从零开始构建现代计算机》
-    - 学习进阶课程[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)并完成相关作业：
-
+  
 - 计算机系统基础
 
   - 为什么学：掌握基础的计算机原理和计算机系统结构知识。
