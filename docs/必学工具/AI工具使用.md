@@ -101,177 +101,147 @@ ChatGPT 常用提示词：
 
 ### 原则 1：**Write clear and specific instructions**（编写清晰和具体的说明）
 
-1. **Use delimiters to clearly indicate distinct parts of the input**（使用分隔符清楚地指示输入的不同部分）
+1. **使用分隔符清楚地指示输入的不同部分**（Use delimiters to clearly indicate distinct parts of the input）
 
-   - Delimiters can be anything like: ` ``` `, """, < >, `<tag> </tag>`, `:`
+   - 分隔符可以是任何东西，如： ` ``` `, """, < >, `<tag> </tag>`, `:`
 
    - 例子：
 
      ```bash
-     prompt = f"""
-     Summarize the text delimited by triple backticks \ 
-     into a single sentence.
+     将由三个反引号分隔的文本总结为一句话。
      ```{text}```
-     """
      ```
-
      
+     
+   
+2. **要求结构化输出**（Ask for a structured output）
 
-2. **Ask for a structured output**
-
-   - JSON, HTML
+   - JSON, HTML等格式
 
    - 例子：
 
      ```bash
-     prompt = f"""
-     Generate a list of three made-up book titles along \ 
-     with their authors and genres. 
-     Provide them in JSON format with the following keys: 
-     book_id, title, author, genre.
-     """
+     生成三个虚构的书名，以及它们的作者和类型。
+     以JSON格式提供，包含以下键值：book_id, title, author, genre。
      ```
-
-3. **Ask the model to check whether conditions are satisfied**
+   
+3. **要求模型检查条件是否满足**（Ask the model to check whether conditions are satisfied）
 
    ```bash
-   prompt = f"""
-   You will be provided with text delimited by triple quotes. 
-   If it contains a sequence of instructions, \ 
-   re-write those instructions in the following format:
+   你将获得由三个引号分隔的文本。如果它包含一系列指令，
+   请以如下格式重新编写这些指令：
    
-   Step 1 - ...
-   Step 2 - …
+   第一步 - ...
+   第二步 - …
    …
-   Step N - …
+   第N步 - …
    
-   If the text does not contain a sequence of instructions, \ 
-   then simply write \"No steps provided.\"
+   如果文本不包含一系列指令， 
+   则简单地写“未提供步骤。”
    
-   \"\"\"{text_1}\"\"\"
-   """
+   """{text_1}"""
    ```
-
-4. **"Few-shot" prompting**
+   
+4. **少样本提示**（"Few-shot" prompting）
 
    ```bash
-   prompt = f"""
-   Your task is to answer in a consistent style.
+   你的任务是以一致的风格回答。
    
-   <child>: Teach me about patience.
+   <孩子>: 教我关于耐心的知识。
    
-   <grandparent>: The river that carves the deepest \ 
-   valley flows from a modest spring; the \ 
-   grandest symphony originates from a single note; \ 
-   the most intricate tapestry begins with a solitary thread.
+   <祖父母>: 刻画最深峡谷的河流来自谦逊的泉源； 
+   最宏大的交响乐始于一个音符； 
+   最复杂的织锦始于一根单线。
    
-   <child>: Teach me about resilience.
-   """
+   <孩子>: 教我关于韧性的知识。
    ```
-
-   ### 原则 2：Give the model time to “think”（给模型一些时间来思考）
-
-   1. **Specify the steps required to complete a task**
-
+   
+   ### 原则 2：给模型一些时间来思考（Give the model time to “think”）
+   
+   1. **指定完成任务所需的步骤**（Specify the steps required to complete a task）
+   
       ```bash
-      prompt_1 = f"""
-      Perform the following actions: 
-      1 - Summarize the following text delimited by triple \
-      backticks with 1 sentence.
-      2 - Translate the summary into French.
-      3 - List each name in the French summary.
-      4 - Output a json object that contains the following \
-      keys: french_summary, num_names.
+      执行以下操作： 
+      1 - 用一句话总结由三个反引号分隔的文本。
+      2 - 将总结翻译成法语。
+      3 - 列出法语总结中的每个名字。
+      4 - 输出一个包含以下键的JSON对象：french_summary, num_names。
       
-      Separate your answers with line breaks.
+      用换行符分隔你的答案。
       
-      Text:
+      文本：
       ```{text}```
-      """
       ```
-
-      **Ask for output in a specified format**
-
+      
+      **要求输出指定格式的内容**（Ask for output in a specified format）
+      
       ```bash
-      prompt_2 = f"""
-      Your task is to perform the following actions: 
-      1 - Summarize the following text delimited by 
-        <> with 1 sentence.
-      2 - Translate the summary into French.
-      3 - List each name in the French summary.
-      4 - Output a json object that contains the 
-        following keys: french_summary, num_names.
+      你的任务是执行以下操作： 
+      1 - 用一句话总结由<>分隔的文本。
+      2 - 将总结翻译成法语。
+      3 - 列出法语总结中的每个名字。
+      4 - 输出一个包含以下键的JSON对象：french_summary, num_names。
       
-      Use the following format:
-      Text: <text to summarize>
-      Summary: <summary>
-      Translation: <summary translation>
-      Names: <list of names in summary>
-      Output JSON: <json with summary and num_names>
+      使用以下格式：
+      Text: <要总结的文本>
+      Summary: <总结>
+      Translation: <总结的翻译>
+      Names: <总结中列出的名字>
+      Output JSON: <包含总结和num_names的json>
       
-      Text: <{text}>
-      """
+      文本: <{text}>
       ```
-
-   2. **Instruct the model to work out its own solution before rushing to a conclusion**
-
+      
+   2. **指示模型在得出结论前自己先解决问题**（Instruct the model to work out its own solution before rushing to a conclusion）
+   
       ````bash
-      prompt = f"""
-      Your task is to determine if the student's solution \
-      is correct or not.
-      To solve the problem do the following:
-      - First, work out your own solution to the problem including the final total. 
-      - Then compare your solution to the student's solution \ 
-      and evaluate if the student's solution is correct or not. 
-      Don't decide if the student's solution is correct until 
-      you have done the problem yourself.
+      你的任务是确定学生的解决方案是否正确。
+      为了解决这个问题，请执行以下操作：
+      - 首先，自己解决问题并得出最终答案。 
+      - 然后将你的解决方案与学生的解决方案进行比较， 
+        并评估学生的解决方案是否正确。
+      在你自己完成问题之前，不要判断学生的解决方案是否正确。
       
-      Use the following format:
-      Question:
+      使用以下格式：
+      问题：
       ```
-      question here
+      这里写问题
       ```
-      Student's solution:
+      学生的解决方案：
       ```
-      student's solution here
+      这里写学生的解决方案
       ```
-      Actual solution:
+      实际解决方案：
       ```
-      steps to work out the solution and your solution here
+      这里写解决问题的步骤以及你的解决方案
       ```
-      Is the student's solution the same as actual solution \
-      just calculated:
+      学生的解决方案与实际解决方案是否相同：
       ```
-      yes or no
+      是或否
       ```
-      Student grade:
+      学生评分：
       ```
-      correct or incorrect
+      正确或错误
       ```
       
-      Question:
+      问题：
       ```
-      I'm building a solar power installation and I need help \
-      working out the financials. 
-      - Land costs $100 / square foot
-      - I can buy solar panels for $250 / square foot
-      - I negotiated a contract for maintenance that will cost \
-      me a flat $100k per year, and an additional $10 / square \
-      foot
-      What is the total cost for the first year of operations \
-      as a function of the number of square feet.
+      我正在建设一个太阳能发电厂，需要帮助计算财务状况。
+      - 土地成本为每平方英尺100美元
+      - 我可以以每平方英尺250美元购买太阳能电池板
+      - 我谈判了一份维护合同，每年将花费我10万美元，外加每平方英尺10美元的费用
+      第一年的总成本作为平方英尺数量的函数是多少？
       ``` 
-      Student's solution:
+      学生的解决方案：
       ```
-      Let x be the size of the installation in square feet.
-      Costs:
-      1. Land cost: 100x
-      2. Solar panel cost: 250x
-      3. Maintenance cost: 100,000 + 100x
-      Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
+      设x为安装面积（平方英尺）。
+      成本：
+      1. 土地成本：100x
+      2. 太阳能电池板成本：250x
+      3. 维护成本：100,000 + 100x
+      总成本：100x + 250x + 100,000 + 100x = 450x + 100,000
       ```
-      Actual solution:
-      """
+      实际解决方案：
       ````
 
 减少模型幻觉的策略，以基于一段文本生成答案的情况为例，先要求模型找到文本中的相关引用，然后让它使用这些引用来回答问题。
