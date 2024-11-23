@@ -113,6 +113,8 @@
 
 ### 4. 应用类计算机课程
 
+- 深度学习：研究生阶段的知识，同时也很重要，继续深化掌握吧。
+
 - [DevOps工程师](https://devopscube.com/become-devops-engineer/)
 
   - 为什么学：成为四级工程师的必要之路。
