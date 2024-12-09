@@ -12,4 +12,4 @@
 
 - 网站：[Docker的官方入门指南](https://docs.docker.com/get-started/) 与 [docker(包括WSL2)如何配置Proxy](https://zhuanlan.zhihu.com/p/427589367)
 - 书籍：《深入浅出Docker》
-
+- 镜像下载：https://docker.aityp.com/

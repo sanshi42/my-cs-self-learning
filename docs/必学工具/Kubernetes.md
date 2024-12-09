@@ -11,4 +11,6 @@
 ## 资源
 
 - 网站：[官方入门教程](https://kubernetes.io/zh-cn/docs/setup/)
-- 教材：推荐先阅读《Kubernetes快速入门（第2版）》，再阅读英文版书《The Kubernetes Book》 
+- 教材：推荐先阅读《Kubernetes快速入门（第2版）》，再阅读英文版书《The Kubernetes Book》
+- 补充材料：[kubernetes 学习](https://github.com/chaseSpace/k8s-tutorial-cn/blob/main/install_by_kubeadm/install.md)
+- 镜像下载：https://docker.aityp.com/
