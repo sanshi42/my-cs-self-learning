@@ -44,7 +44,7 @@
 
 - Redis：
   - [菜鸟教程简单入门](https://www.runoob.com/redis/redis-intro.html)
-  - [菜鸟教程Python redis 使用介绍](https://www.runoob.com/w3cnote/python-redis-intro.html)
+  - [菜鸟教程 Python redis 使用介绍](https://www.runoob.com/w3cnote/python-redis-intro.html)
 - MySQL：掌握基础的SQL语言的知识。
   - 《SQL必知必会（第5版）》
 
