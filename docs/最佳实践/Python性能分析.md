@@ -10,13 +10,15 @@
 
 ## 资源
 
-- 网站：[Viztracer 的 github 网站](https://github.com/gaogaotiantian/viztracer/tree/master)
+- 网站：[VizTracer 的 github 网站](https://github.com/gaogaotiantian/viztracer/tree/master)
 - 视频：[VizTracer 作者的讲解](https://www.bilibili.com/video/BV1d34y1C78W?p=1&vd_source=1bcb5908804c91c0b3861acbd9aab0f8)
 - 教材：《Python 高性能编程（第 2 版）》
 - 作业：
 - 补充：
 
 ## 附注
+
+### 总体介绍
 
 以Python模块 julia.py 中的 `calc_pure_python(desired_width, max_iterations)` 函数为例子。
 
@@ -60,6 +62,22 @@
      kernprof -l -v julia.py
      ```
 
+  6. 使用 `hyperfine`命令行基准测试工具
+
+     ```bash
+     # 安装
+     # macOS
+     brew install hyperfine
+     # Ubuntu/Debian
+     sudo apt install hyperfine
+     
+     hyperfine \
+       --warmup 1 \
+       --prepare "echo 3 | sudo tee /proc/sys/vm/drop_caches" \
+       --shell=none \
+       "taskset -c 9 julia.py"
+     ```
+  
 - 内存占用分析
 
   1. memory_profiler：逐行分析内存占用情况，速度较慢。
@@ -68,15 +86,29 @@
      pip install memory_profiler psutil
      # 与line_profiler 相同使用装饰器@profile，进程大小超过100MB时启动调试器pdb
      python -m memory_profiller --pdb-mmem=100 julia.py # 时间非常慢
-     # 可视化方法
+     
+     # 可视化内存占用量变化情况
      pip install matplotlib
      mprof run julia.py # 生成一个统计文件，如mprofile_20240718085044.dat
      mprof plot mprofile_20240718085044.dat # 可视化该文件
      # 可以使用上下文管理器来添加标签，在代码中增加如下内容
      with profile.timestamp("label_name"):
          # 代码片段
+         ...
      ```
-
-  2. IPython 中使用%memit
-
   
+  2. IPython 中使用 `%memit`（工作原理与`%timeit`类似）
+  
+     
+
+### 最佳流程
+
+    1. **总体分析**：使用 cProfile （包括 VizTracer、SnakeViz等辅助工具）提供的高级视图剖析总体代码；
+    2. **细节分析**：根据需要使用 line_profiler 对具体函数进行逐行剖析；（可选，因为很慢）偶尔使用 memory_profiler 分析内存占用情况；
+    3. **修改代码**：使用 line_profiler 的输出进行打印和注释作为快速参考的代码变更记录。
+
+### 提醒
+
+- 做出的假设易于测试；
+- 只修改与要测试的假设相关的代码（绝不要同时测试两个方面）；
+- 收集的证据足以支持结论。
