@@ -37,40 +37,24 @@ pip install ruff
    配置本地 `pyproject.toml`，加上如下内容：
 
    ```toml
+   [tool.ruff]
+   # 参照 Black 代码行宽使用现代项目常用的 88 字符
+   line-length = 88
+   
+   [tool.ruff.lint]
+   extend-select = [
+       'UP',  # pyupgrade
+   #    'D',  # pydocstyle
+       'I',  # 启用 Isort
+   ]
+   
+   [tool.ruff.lint.pydocstyle]
+   convention = "google"
+   
    [tool.ruff.format]
    quote-style = "single"
+   # 忽略“magic trailing comma”信号，让 formatter 在能合并一行时合并
+   skip-magic-trailing-comma = true
    ```
-
    
 
-## Python 包导入排序工具——isort
-
-### 安装 `isort`：
-
-首先，安装 `isort`。
-
-```
-pip install isort
-```
-
-### 配置 `isort`：
-
-在 PyCharm 中，可以通过以下步骤配置 `isort`。
-
-1. **打开 PyCharm 设置**：和配置 `Blue` 相同，进入 `File` -> `Settings` -> `Tools` -> `External Tools`。
-2. **添加 `isort`**（具体配置如参考下图）：
-   - 点击 `+`。
-   - **Name**: `isort`
-   - **Program**: 输入 `isort`（可执行文件的路径，通常为 `isort`）。
-   - **Arguments**: 使用 `$FilePathRelativeToProjectRoot$`。
-   - **Working Directory**: 选择 `$ProjectFileDir$`。
-   - **Output Filters**: 保持默认。
-3. **设置快捷键**：同样在 `Keymap` 中为 `isort` 设置快捷键，以便快速格式化导入部分，参考配置为 `Shift + Alt + I`。
-
-## 相关插件
-
-1. Mirrod：用来进行k8s环境的流量拦截 3.55.0版本，binary版本3.67.0
-
-2. ideal0
-
-   

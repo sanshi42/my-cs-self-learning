@@ -156,8 +156,18 @@
 
   > 没有什么能比自己写个关系型数据库更能加深对数据库系统的理解了。
 
+  前置条件：
+
+  - 学习 C++：[learncpp.com](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/)
+
+  [CMU 15-445: Database Systems](https://csdiy.wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/15445/)
+
 - 微服务架构
 
   - 为什么学：开发工作中经常使用的架构，需要简单了解。
   - 如何学习：
     - 《凤凰架构：构建可靠的大型分布式系统》
+
+### 5. 参考的后续学习
+
+- [MIT6.824: 分布式系统](https://csdiy.wiki/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/MIT6.824/) 2021 版
