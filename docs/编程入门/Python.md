@@ -16,6 +16,6 @@
 - 作业：
 - 补充：
 
-![image-20240617115011662](/home/huanglei/.config/Typora/typora-user-images/image-20240617115011662.png)
+![image-20240617115011662](../images/image-20240617115011662.png)
 
-![image-20240617115042365](/home/huanglei/.config/Typora/typora-user-images/image-20240617115042365.png)
+![image-20240617115042365](../images/image-20240617115042365.png)

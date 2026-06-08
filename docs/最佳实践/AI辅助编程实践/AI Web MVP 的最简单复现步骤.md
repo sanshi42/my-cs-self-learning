@@ -40,9 +40,11 @@ Codex 官方 quickstart 明确建议：开始让 AI 改代码前，先做 Git ch
 所以你先执行：
 
 ```bash
-git status
+# 清理 Git 历史
+rm -rf .git
+git init -b main
 git add .
-git commit -m "chore: clone fastapi full stack template"
+git commit -m "chore: initialize from fastapi template"
 ```
 
 这一步的意义很简单：
