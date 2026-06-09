@@ -12,6 +12,16 @@
 
 ------
 
+## 框架核心
+
+- 先收敛目标和边界，再开始实现。
+- 一次只推进一个最小任务。
+- 每个任务都要有清楚的验收方式。
+- 完成后把当前状态、下一步和遗留问题写回项目文档。
+- 如果项目已经有同等职责的文档或状态源，优先复用，不为套模板重复创建文件。
+
+------
+
 ## 适用场景
 
 适合：
@@ -36,7 +46,7 @@
 项目启动时，按这个顺序生成文档和任务：
 
 ```text
-idea
+想法
 -> docs/proposal.md
 -> docs/mvp-scope.md
 -> docs/product-backlog.md
@@ -47,19 +57,55 @@ idea
 -> tasks/progress.md
 -> tasks/000-project-workflow/task-spec.md
 -> tasks/001-.../task-spec.md
--> implementation
+-> 实现
 ```
 
-已有项目中新增功能时，不重新走完整流程，只使用缩小版：
+------
+
+## 轻量方案：
+
+如果项目已经存在，或者你只想先把 Agent 工作方式固定下来，可以先不创建完整 MVP 文档包，只保留两个文件：
 
 ```text
-读现有 docs
--> 判断是否在 scope/backlog/sprint 内
--> 创建 tasks/<id>/task-spec.md
--> 实现
--> 验证
--> 更新 tasks/progress.md
+.
+├── AGENTS.md
+└── docs/
+    └── agent-workflow.md
 ```
+
+职责：
+
+- `AGENTS.md`：长期规则，说明 Agent 在这个项目里怎么工作、先读哪些文件、哪些事不能做、如何验证。
+- `docs/agent-workflow.md`：当前状态面板，说明项目现状、当前目标、本轮边界、当前任务、下一步、验证方式和最近变更。
+
+`docs/agent-workflow.md` 推荐只保留 8 段：
+
+```markdown
+# Agent Workflow
+
+## Project Snapshot
+
+## Current Goal
+
+## Scope
+
+## Non-goals
+
+## Current Task
+
+## Next Steps
+
+## Verification
+
+## Change Log
+```
+
+使用规则：
+
+- 不确定时，先使用轻量方案。
+- 任务复杂、跨多步或需要交接时，再增加 `tasks/*.md`。
+- 从 0 到 1 创建新产品或 MVP 时，再使用后文完整流程。
+- 如果项目已有同等职责文件，例如已有 sprint plan、issue 面板或项目任务书，优先复用已有文件。
 
 ------
 
@@ -567,45 +613,6 @@ tasks/progress.md
 
 ------
 
-## 中途新增功能怎么用
-
-已有项目中新增功能时，不要重新生成全套文档。
-
-使用缩小版流程：
-
-```text
-1. 阅读现有 mvp-scope、product-backlog、tech-design、sprint-plan、progress。
-2. 判断新功能是否在当前 scope/backlog 内。
-3. 如果已在 scope 内：创建新的 task-spec。
-4. 如果不在 scope 内但合理：先更新 product-backlog，必要时更新 sprint-plan。
-5. 如果改变产品边界：更新 mvp-scope 或创建后续版本 scope。
-6. 如果改变长期技术方向：新增 ADR。
-7. 如果功能复杂且横跨多个任务：新增 docs/designs/<feature>.md。
-8. 再开始实现。
-```
-
-### 新增功能 prompt
-
-```text
-我想在当前项目中新增一个功能：
-
-[描述功能]
-
-请先不要写代码。
-
-请阅读当前项目的 `docs/`、`CONTEXT.md`、`AGENTS.md` 和 `tasks/progress.md`，判断这个功能属于哪种情况：
-
-1. 已在当前 scope/backlog 内，可以直接拆 task。
-2. 需要先更新 product-backlog 或 sprint-plan。
-3. 改变了 MVP 范围，需要先更新 mvp-scope 或放入后续版本。
-4. 改变了长期技术方向，需要新增 ADR。
-5. 功能过大，需要先拆成多个 task 或写专题设计。
-
-请先给出判断和推荐处理方式，不要直接实现。
-```
-
-------
-
 ## ADR 什么时候写
 
 ADR 是 Architecture Decision Record，放在：
@@ -775,51 +782,16 @@ tasks/**/*.md
 
 完成项目启动框架后，检查这些问题：
 
-- [ ] 是否有 `docs/proposal.md`。
-- [ ] 是否有 `docs/mvp-scope.md`，并明确“不做什么”。
-- [ ] 是否有 `docs/product-backlog.md`，并区分 P0/P1/P2/Later。
-- [ ] 是否有 `docs/tech-design.md`，并保持最小技术方案。
-- [ ] 是否有 `CONTEXT.md`，并统一领域语言。
-- [ ] 是否有 `docs/sprint-plan.md`，并拆成 3-5 个 Sprint。
-- [ ] 是否有 `AGENTS.md`，并约束 Agent 工作方式。
-- [ ] 是否有 `tasks/progress.md`。
-- [ ] 是否有 `tasks/000-project-workflow/task-spec.md`。
-- [ ] 第一个真实任务是否来自当前 Sprint。
-- [ ] 每个任务是否足够小，可以独立验收。
-- [ ] 是否明确何时写 ADR。
-- [ ] 是否明确何时写 `docs/designs/*.md`。
+- [ ] 是否先写清目标、边界和非目标。
+- [ ] 是否有长期规则文件，例如 `AGENTS.md`。
+- [ ] 是否有当前状态源，例如 `docs/agent-workflow.md`、`tasks/progress.md`、sprint plan 或 issue 面板。
+- [ ] 是否明确当前最小任务和下一步。
+- [ ] 是否明确验收方式。
+- [ ] 是否明确完成后要更新哪个状态源。
+- [ ] 如果使用完整 MVP 流程，是否已经补齐 proposal、scope、backlog、tech-design、CONTEXT、sprint-plan 和 tasks 工作台。
+- [ ] 如果只使用轻量方案，是否没有为了套模板创建多余文件。
+- [ ] 是否明确何时写 ADR 或 `docs/designs/*.md`。
 
 如果这些都满足，你就已经有了一个可以持续使用的 Agent 敏捷开发框架。
 
 ------
-
-## 最短可复制启动 prompt
-
-如果你只想快速开始，可以把下面这段直接交给 Agent：
-
-```text
-我想为当前项目建立一套 Agent 敏捷开发框架。
-
-请先不要写业务代码。
-
-请按以下顺序创建项目文档：
-
-1. `docs/proposal.md`：初始产品简报。
-2. `docs/mvp-scope.md`：MVP 范围合同，明确做什么和不做什么。
-3. `docs/product-backlog.md`：产品需求池，包含优先级、状态、依赖和验收标准。
-4. `docs/tech-design.md`：最小技术方案和核心契约。
-5. `CONTEXT.md`：领域语言和上下文。
-6. `docs/sprint-plan.md`：3-5 个 Sprint 的交付计划。
-7. `AGENTS.md`：Agent 工作规约。
-8. `tasks/progress.md`：当前事实面板。
-9. `tasks/000-project-workflow/task-spec.md`：建立单任务推进工作流的元任务。
-
-要求：
-- 每一步先生成清晰可读的 Markdown。
-- 不要提前实现业务代码。
-- 如果需求不清楚，先问我关键问题。
-- 每个文档都要说明自己的职责边界。
-- 默认一次只推进一个小任务。
-```
-
-这个 prompt 适合快速搭框架；如果是认真做项目，仍然建议按本文前面的步骤逐步确认。
