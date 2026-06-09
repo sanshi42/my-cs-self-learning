@@ -150,14 +150,13 @@ git status --short
 ### 提示词
 
 ```text
-我想[在这里用自然语言写你的产品想法]
+$grill-me 我想[在这里用自然语言写你的产品想法]
 请根据这个想法创建或更新 `docs/proposal.md`。
 要求：
 - 把它写成初始产品简报，而不是完整需求规格书。
 - 包含 Summary、Target Users、Problem、Proposed Solution、Key Requirements、Acceptance Criteria、Assumptions。
 - 明确第一版只解决什么核心问题。
 - 不要写技术实现细节，技术方案后面会放到 `docs/tech-design.md`。
-- 如果需求不清楚，先问我 1-3 个关键问题，不要自己脑补复杂功能。
 ```
 
 ### 产物
@@ -187,7 +186,7 @@ docs/proposal.md
 ### 提示词
 
 ```text
-请阅读 `docs/proposal.md`，然后创建 `docs/mvp-scope.md`。
+$grill-me 本项目采用敏捷开发的方式，请阅读 `docs/proposal.md`，然后创建 `docs/mvp-scope.md`。
 
 要求：
 - 明确 MVP 目标。
@@ -233,7 +232,7 @@ MVP 完成后不要删除 `mvp-scope.md`。它是 v1 的历史范围合同，用
 ### 提示词
 
 ```text
-请阅读 `docs/proposal.md` 和 `docs/mvp-scope.md`，然后创建 `docs/product-backlog.md`。
+$grill-me 本项目采用敏捷开发，请阅读 `docs/proposal.md` 和 `docs/mvp-scope.md`，然后创建 `docs/product-backlog.md`。
 
 要求：
 - 使用表格记录 backlog。
@@ -277,7 +276,7 @@ docs/product-backlog.md
 ### 提示词
 
 ```text
-请阅读：
+$grill-me 本项目采用敏捷开发，请阅读：
 - `docs/proposal.md`
 - `docs/mvp-scope.md`
 - `docs/product-backlog.md`
@@ -324,7 +323,7 @@ docs/tech-design.md
 ### 提示词
 
 ```text
-请阅读：
+$grill-with-docs 本项目采用敏捷开发，请阅读：
 - `docs/proposal.md`
 - `docs/mvp-scope.md`
 - `docs/product-backlog.md`
@@ -380,7 +379,7 @@ CONTEXT.md
 ### 提示词
 
 ```text
-请阅读：
+$grill-me 本项目采用敏捷开发，请阅读：
 - `docs/mvp-scope.md`
 - `docs/product-backlog.md`
 - `docs/tech-design.md`
@@ -428,7 +427,7 @@ docs/sprint-plan.md
 ### 提示词
 
 ```text
-请阅读：
+$init 本项目采用敏捷开发，请阅读：
 - `docs/mvp-scope.md`
 - `docs/product-backlog.md`
 - `docs/tech-design.md`
@@ -491,10 +490,10 @@ verification-output.md
 
 独立目录让任务边界更清楚。
 
-### 复制给 Agent 的 prompt
+### 提示词
 
 ```text
-请根据当前项目文档初始化 `tasks/` 工作台。
+$grill-me 本项目采用敏捷开发，请根据当前项目文档初始化 `tasks/` 工作台。每次只完成一个小任务，并为每个任务写一个task-spec.md 统一放在 tasks/ 下，同时用progress.md 记录当前已完成哪些，下一步做什么。
 
 要求：
 - 创建 `tasks/progress.md`。
@@ -528,7 +527,7 @@ tasks/000-project-workflow/task-spec.md
 
 第一个真实 task 应该来自当前 Sprint 中最小、最基础、依赖最少的 backlog item。
 
-### 复制给 Agent 的 prompt
+### 提示词
 
 ```text
 请开始第一个真实开发任务。
