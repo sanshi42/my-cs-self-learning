@@ -1,764 +1,293 @@
-# Agent 敏捷开发框架最佳实践
+# Agent 轻量开发框架最佳实践
 
-## 目标
+这是一套面向个人开发者和小团队的 Agent 开发框架。
 
-这是一套可以照着执行的 Agent 敏捷开发框架，用来把一个产品想法逐步变成可执行、可验收、可持续推进的 MVP 项目。
+它只解决一个问题：
 
-它的核心思想是：
+> 先把一个主题想清楚，再让 Agent 一次完成一个小任务。
 
-> 先用文档收敛产品和技术边界，再让 Agent 一次只实现一个小任务。
+默认不使用复杂流程，不默认创建额外目录，也不把每个功能都拆成一堆流程文件。
 
-这不是完整 Scrum 管理流程，也不是瀑布式需求规格模板。它更适合个人开发者、小团队，或者一个人配合 Codex、Claude Code、Cursor、OpenCode 等 Agent 工具开发本地项目、Web App、后端服务、AI 应用原型。
+## 核心原则
 
-------
+- Less is more，默认文件越少越好。
+- 一个复杂主题一个目录。
+- 先写清 `Goal` 和 `Boundary`，再写实现计划。
+- 一次只推进一个 `Task`。
+- 每次完成后更新 `Status`。
+- 如果三份文件已经装不下，优先拆成多个 `Topic`，不要继续加流程文件。
 
-## 框架核心
+## 核心术语
 
-- 先收敛目标和边界，再开始实现。
-- 一次只推进一个最小任务。
-- 每个任务都要有清楚的验收方式。
-- 完成后把当前状态、下一步和遗留问题写回项目文档。
-- 如果项目已经有同等职责的文档或状态源，优先复用，不为套模板重复创建文件。
+| 术语 | 中文 | 用途 |
+| --- | --- | --- |
+| `Topic` | 主题 | 一个可以独立规划、实现、验收的复杂方向 |
+| `Goal` | 目标 | 这个主题要达成什么结果 |
+| `Boundary` | 边界 | 本主题做什么、不做什么 |
+| `Milestone` | 里程碑 | 分阶段交付的顺序 |
+| `Task` | 任务 | 一次 Agent 可以独立完成并验证的小工作 |
+| `Status` | 状态 | 当前进度、完成记录、下一步和阻塞项 |
 
-------
-
-## 适用场景
-
-适合：
-
-- 从 0 到 1 创建一个 MVP 项目。
-- 想让 Agent 按小任务稳定推进，而不是一次性乱改。
-- 希望项目中有清晰的产品范围、技术方案、任务记录和进度面板。
-- 项目还不大，但希望后续能持续演进。
-- 需要把 ChatGPT 中讨论出来的想法沉淀成 Codex 可以执行的仓库任务。
-
-不适合：
-
-- 大型公司完整 Scrum 管理。
-- 已经有成熟 Jira、Confluence、RFC、ADR 流程的团队。
-- 只写一个一次性脚本，不需要长期维护。
-- 需求还没想清楚，却希望 Agent 直接写完整系统。
-
-------
-
-## 核心流程
-
-项目启动时，按这个顺序生成文档和任务：
-
-```text
-想法
--> docs/proposal.md
--> docs/mvp-scope.md
--> docs/product-backlog.md
--> docs/tech-design.md
--> CONTEXT.md
--> docs/sprint-plan.md
--> AGENTS.md
--> tasks/progress.md
--> tasks/000-project-workflow/task-spec.md
--> tasks/001-.../task-spec.md
--> 实现
-```
-
-------
-
-## 轻量方案：
-
-如果项目已经存在，或者你只想先把 Agent 工作方式固定下来，可以先不创建完整 MVP 文档包，只保留两个文件：
+## 默认结构
 
 ```text
 .
 ├── AGENTS.md
 └── docs/
-    └── agent-workflow.md
+    └── <topic>/
+        ├── proposal.md
+        ├── plan.md
+        └── tasks.md
 ```
 
-职责：
+说明：
 
-- `AGENTS.md`：长期规则，说明 Agent 在这个项目里怎么工作、先读哪些文件、哪些事不能做、如何验证。
-- `docs/agent-workflow.md`：当前状态面板，说明项目现状、当前目标、本轮边界、当前任务、下一步、验证方式和最近变更。
+- `AGENTS.md` 是仓库级长期规则，告诉 Agent 如何在这个项目中工作。
+- `docs/<topic>/proposal.md` 写清主题、目标和边界。
+- `docs/<topic>/plan.md` 写清实现思路、里程碑和验证方式。
+- `docs/<topic>/tasks.md` 记录任务、状态和下一步。
 
-`docs/agent-workflow.md` 推荐只保留 8 段：
+默认只创建这三个主题文件，不默认创建额外流程文件。
+
+## 三个文件怎么写
+
+### `proposal.md`
+
+`proposal.md` 用来回答：
+
+- 这个 `Topic` 是什么。
+- `Goal` 是什么。
+- `Boundary` 是什么。
+- 完成后应该能看到什么结果。
+
+推荐结构：
 
 ```markdown
-# Agent Workflow
+# <Topic> Proposal
 
-## Project Snapshot
+## Goal
 
-## Current Goal
+## Boundary
 
-## Scope
+### In
 
-## Non-goals
+### Out
+```
+
+提示词：
+
+```text
+$grill-me 我想做一个主题：[描述想法]
+
+请创建或更新 `docs/<topic>/proposal.md`。
+要求：
+- 只写 Topic、Goal 和 Boundary。
+- Boundary 必须同时写清 In 和 Out。
+- 不写技术实现细节。
+- 不扩展成复杂产品需求文档。
+```
+
+### `plan.md`
+
+`plan.md` 用来回答：
+
+- 怎么做。
+- 分几个 `Milestone` 做。
+- 每个阶段怎么验收。
+- 有哪些关键实现取舍。
+
+推荐结构：
+
+```markdown
+# <Topic> Plan
+
+## Milestones
+
+### M1: <milestone title>
+
+- Goal:
+- Boundary:
+- Verification:
+```
+
+提示词：
+
+```text
+请阅读 `docs/<topic>/proposal.md`，创建或更新 `docs/<topic>/plan.md`。
+
+要求：
+- 写出最小可执行方案。
+- 用 Milestones 表达交付顺序。
+- 每个 Milestone 必须写清 Goal、Boundary 和 Verification。
+- 不创建额外流程文件。
+```
+
+### `tasks.md`
+
+`tasks.md` 用来回答：
+
+- 当前 `Status` 是什么。
+- 当前正在做哪个 `Task`。
+- 后续有哪些 `Task`。
+- 哪些已经完成。
+
+推荐结构：
+
+```markdown
+# <Topic> Tasks
+
+## Status
 
 ## Current Task
 
-## Next Steps
+## Next Tasks
 
-## Verification
-
-## Change Log
+## Done
 ```
 
-使用规则：
+每个 `Task` 推荐只保留这些字段：
 
-- 不确定时，先使用轻量方案。
-- 任务复杂、跨多步或需要交接时，再增加 `tasks/*.md`。
-- 从 0 到 1 创建新产品或 MVP 时，再使用后文完整流程。
-- 如果项目已有同等职责文件，例如已有 sprint plan、issue 面板或项目任务书，优先复用已有文件。
+```markdown
+### T001: <task title>
 
-------
-
-## 推荐目录结构
-
-项目根目录建议长这样：
-
-```text
-.
-├── AGENTS.md
-├── CONTEXT.md
-├── docs/
-│   ├── proposal.md
-│   ├── mvp-scope.md
-│   ├── product-backlog.md
-│   ├── tech-design.md
-│   ├── sprint-plan.md
-│   ├── adr/
-│   │   └── 0001-example.md
-│   └── designs/
-│       └── complex-feature.md
-└── tasks/
-    ├── progress.md
-    ├── 000-project-workflow/
-    │   └── task-spec.md
-    └── 001-first-real-task/
-        └── task-spec.md
+- Goal:
+- Boundary:
+- Verification:
+- Status:
 ```
 
-原则：
-
-- `docs/` 是长期知识库。
-- `tasks/` 是执行工作台。
-- `AGENTS.md` 是 Agent 工作规约。
-- `CONTEXT.md` 是领域语言和上下文。
-- `task-spec.md` 是单次任务规格，不是 ADR。
-
-------
-
-## 第 1 步：生成 `proposal.md`
-
-### 目的
-
-`proposal.md` 是初始产品简报，不是完整需求规格书。
-
-它回答：
-
-- 为什么做。
-- 给谁用。
-- 解决什么问题。
-- 第一版大概长什么样。
-- 成功验收大概是什么样。
-- 当前有哪些关键假设。
-
-### 提示词
+提示词：
 
 ```text
-$grill-me 我想[在这里用自然语言写你的产品想法]
-请根据这个想法创建或更新 `docs/proposal.md`。
-要求：
-- 把它写成初始产品简报，而不是完整需求规格书。
-- 包含 Summary、Target Users、Problem、Proposed Solution、Key Requirements、Acceptance Criteria、Assumptions。
-- 明确第一版只解决什么核心问题。
-- 不要写技术实现细节。
-```
+请阅读：
+- `docs/<topic>/proposal.md`
+- `docs/<topic>/plan.md`
 
-### 产物
-
-```text
-docs/proposal.md
-```
-
-### 人工检查点
-
-- 是否能用一两段话说清产品是什么。
-- 是否说明目标用户。
-- 是否说明第一版成功标准。
-- 是否没有过早写技术细节。
-- 是否没有把未来功能都塞进第一版。
-
-------
-
-## 第 2 步：生成 `mvp-scope.md`
-
-### 目的
-
-`mvp-scope.md` 是 MVP 范围合同。它决定第一版做什么、不做什么。
-
-这个文件非常重要，因为 Agent 后续最容易犯的错就是顺手扩大范围。
-
-### 提示词
-
-```text
-$grill-me 本项目采用敏捷开发的方式，请阅读 `docs/proposal.md`，然后创建 `docs/mvp-scope.md`。
+然后创建或更新 `docs/<topic>/tasks.md`。
 
 要求：
-- 明确 MVP 目标。
-- 分成 “MVP 做什么” 和 “MVP 不做什么”。
-- 写出 MVP 用户故事。
-- 写出 MVP 验收标准。
-- 写出第一版迭代建议。
-- 明确哪些功能必须 deferred，不允许在第一版偷偷实现。
-- 不要写详细技术实现。
+- 只拆出当前需要的 Task。
+- 每个 Task 都要有 Goal、Boundary、Verification 和 Status。
+- 选择一个最小 Current Task，其余放入 Next Tasks。
+- 不创建额外目录。
 ```
 
-### 产物
+## 标准流程
 
 ```text
-docs/mvp-scope.md
+Idea
+-> docs/<topic>/proposal.md
+-> docs/<topic>/plan.md
+-> docs/<topic>/tasks.md
+-> Implementation
+-> Update Status
 ```
 
-### 人工检查点
+执行规则：
 
-- “不做什么” 是否足够明确。
-- 是否能防止 Agent 顺手做账号系统、云同步、复杂 UI、批量任务、AI 总结等非 MVP 内容。
-- MVP 验收标准是否能人工或自动验证。
-- 是否真的只保留第一版核心闭环。
+1. 先确定 `Topic` 名称。
+2. 先写 `proposal.md`，确认 `Goal` 和 `Boundary`。
+3. 再写 `plan.md`，确认 `Milestone` 和验证方式。
+4. 再写 `tasks.md`，选择一个最小 `Task`。
+5. Agent 只实现当前 `Task`。
+6. 完成后运行验证。
+7. 最后更新 `tasks.md` 里的 `Status`。
 
-### 注意
+## 拆分主题的规则
 
-MVP 完成后不要删除 `mvp-scope.md`。它是 v1 的历史范围合同，用来解释第一版为什么做这些、为什么不做那些。
+不要通过增加文件解决复杂度。
 
-------
-
-## 第 3 步：生成 `product-backlog.md`
-
-### 目的
-
-`product-backlog.md` 是产品需求池。
-
-它回答：
-
-> 有哪些事情值得做？
-
-它不负责决定每个 Sprint 做什么，也不写具体代码实现。
-
-### 提示词
+如果一个主题变得太大，拆成多个主题目录：
 
 ```text
-$grill-me 本项目采用敏捷开发，请阅读 @proposal.md 和 @mvp-scope.md，然后创建 product-backlog.md。
+docs/ai-reading-app/
+├── proposal.md
+├── plan.md
+└── tasks.md
 
-要求：
-- 使用表格记录 backlog。
-- 每个 backlog item 要有 ID、Priority、Status、Epic、User Story、Acceptance Criteria、Dependencies。
-- Priority 使用 P0、P1、P2、Later。
-- Status 使用 Todo、Ready、Doing、Review、Done、Deferred。
-- P0 必须能支撑 MVP 核心闭环。
-- 不进入 MVP 的内容放到 Deferred Items。
-- 每个用户故事都要有可验收标准。
-- 如果一个故事太大，请拆成多个更小的故事。
+docs/ai-reading-import/
+├── proposal.md
+├── plan.md
+└── tasks.md
+
+docs/ai-reading-tts/
+├── proposal.md
+├── plan.md
+└── tasks.md
 ```
 
-### 产物
+适合拆分的信号：
 
-```text
-docs/product-backlog.md
+- 一个 `Topic` 里出现多个互相独立的 `Goal`。
+- 一个 `Milestone` 已经像另一个完整主题。
+- `Next Tasks` 里出现两条以上可以独立验收的主线。
+- Agent 需要同时理解太多上下文才能开始一个小任务。
+
+拆分后，每个新 `Topic` 仍然只保留 `proposal.md`、`plan.md`、`tasks.md`。
+
+## `AGENTS.md` 怎么写
+
+`AGENTS.md` 只写长期规则，不写某个主题的一次性任务。
+
+推荐包含：
+
+```markdown
+# AGENTS.md
+
+## 工作方式
+
+- 默认使用中文沟通。
+- 开始任务前先阅读当前 `docs/<topic>/` 下的三个文件。
+- 一次只完成一个 Task。
+- 不要主动扩大 Boundary。
+- 如果新想法超出当前 Boundary，先记录到 `tasks.md`，不要直接实现。
+- 完成后运行验证，并更新 `tasks.md` 的 Status。
+
+## 验证方式
+
+- 写清本项目常用测试、格式化、启动和检查命令。
+
+## Git 约定
+
+- 未经用户明确要求，不主动 commit、push 或改写 Git 历史。
 ```
-
-### 人工检查点
-
-- P0 是否真的是 MVP 必须项。
-- Later/Deferred 是否明确记录。
-- 每个 item 是否有验收标准。
-- 是否出现了无法在一个 Sprint 内理解的大需求。
-- 依赖关系是否清楚。
-
-------
-
-## 第 4 步：生成 `tech-design.md`
-
-### 目的
-
-`tech-design.md` 是最小技术方案和核心契约。
-
-它回答：
-
-> 这个 MVP 技术上最小怎么做？
-
-它不是传统瀑布式详细设计，不要提前写死每个函数、每个组件、每条 SQL。
-
-### 提示词
-
-```text
-$grill-me 本项目采用敏捷开发，请阅读：
-- @proposal.md
-- @mvp-scope.md
-- @product-backlog.md
-
-然后创建 `tech-design.md`。
-
-要求：
-- 写出最小技术方案，不要写成完整详细设计。
-- 包含技术选型、项目结构、数据模型、API 草案、关键模块边界、本地运行方式、技术非目标。
-- 每个技术选择都要说明为什么适合 MVP。
-- 优先使用简单、可本地运行、容易验证的方案。
-- 不要引入超出 MVP 需要的复杂依赖。
-- 如果某个技术决策会长期影响项目，请标记为可能需要 ADR。
-```
-
-### 产物
-
-```text
-docs/xxx/tech-design.md
-```
-
-### 人工检查点
-
-- 技术方案是否足够让 Sprint 1 开工。
-- 是否没有过度设计。
-- 是否明确目录结构。
-- 是否明确数据和 API 的核心契约。
-- 是否说明了哪些技术能力暂时不做。
-
-------
-
-## 第 5 步：生成 `CONTEXT.md`
-
-### 目的
-
-`CONTEXT.md` 是领域语言和上下文文档。
-
-它解决的问题是：
-
-> Agent 后续写代码时，不要一会儿叫 article，一会儿叫 document，一会儿叫 material。
-
-它不是任务计划，也不是需求文档。
-
-### 提示词
-
-```text
-$grill-with-docs 本项目采用敏捷开发，请阅读：
-- @proposal.md
-- @mvp-scope.md
-- @product-backlog.md
-- @tech-design.md
-
-然后创建 `CONTEXT.md`。
-
-要求：
-- 提取项目中最核心的领域概念。
-- 每个概念包含中文名、英文名、定义、使用场景、避免使用的混淆词。
-- 只记录稳定概念，不记录临时实现细节。
-- 帮助后续 Agent 在命名、代码、接口、文档中保持统一语言。
-```
-
-### 产物
-
-```text
-CONTEXT.md
-```
-
-### 人工检查点
-
-- 是否列出了真正的领域核心词。
-- 是否避免把技术实现词误当领域词。
-- 是否说明哪些词不要乱用。
-- 是否能帮助后续代码命名。
-
-### 示例
-
-比如一个阅读器项目里，可以定义：
-
-```text
-阅读材料（Reading Material）
-结构化正文（Structured Body）
-材料库（Material Library）
-来源身份（Source Identity）
-```
-
-------
-
-## 第 6 步：生成 `sprint-plan.md`
-
-### 目的
-
-`sprint-plan.md` 是交付节奏计划。
-
-它回答：
-
-> backlog 里的事情按什么顺序交付？
-
-它不替代 `product-backlog.md`。
-
-### 提示词
-
-```text
-$grill-me 本项目采用敏捷开发，请阅读：
-- @mvp-scope.md
-- @product-backlog.md
-- @tech-design.md
-- @CONTEXT.md
-
-然后创建 `sprint-plan.md`。
-
-要求：
-- 把 MVP 拆成 3-5 个小 Sprint。
-- 每个 Sprint 包含目标、Backlog 范围、进入条件、实施重点、不做什么、验收演示、完成标准、风险。
-- Sprint 1 必须能产生最小可运行或可验证的基础闭环。
-- 不要把无依赖关系的大量功能塞进同一个 Sprint。
-- 如果 backlog item 太大，请建议拆分。
-```
-
-### 产物
-
-```text
-docs/sprint-plan.md
-```
-
-### 人工检查点
-
-- Sprint 顺序是否符合依赖关系。
-- Sprint 1 是否足够小。
-- 每个 Sprint 是否有清楚的完成标准。
-- 是否把体验打磨、可选项和核心闭环分开。
-
-------
-
-## 第 7 步：初始化 `tasks/` 工作台
-
-### 目的
-
-`tasks/` 是执行工作台。它记录每次 Agent 实际要做什么、做到哪里算完成、完成后做了什么。
-
-### 为什么不放进 `docs/tasks/*.md`
-
-可以放，但不推荐作为默认。
-
-推荐保留：
-
-```text
-tasks/<task-id>/task-spec.md
-```
-
-原因是每个任务未来可能不止一个 Markdown 文件，还可能有：
-
-```text
-manual-test.md
-sample-input.txt
-screenshot.png
-verification-output.md
-```
-
-独立目录让任务边界更清楚。
-
-### 提示词
-
-```text
-$grill-me 本项目采用敏捷开发，请根据当前项目文档初始化 `tasks/` 工作台。每次只完成一个小任务，并为每个任务写一个task-spec.md 统一放在 tasks/ 下，同时用progress.md 记录当前已完成哪些，下一步做什么。
-
-要求：
-- 创建 `tasks/progress.md`。
-- 创建 `tasks/000-project-workflow/task-spec.md`。
-- `000-project-workflow` 是元任务，用来记录本项目开始采用单任务推进工作流。
-- `tasks/progress.md` 需要包含当前状态、已完成任务、当前任务、下一步、阻塞项、最近变更记录、维护规则。
-- `task-spec.md` 需要包含 Task ID、Task Title、Backlog Reference、Goal、Scope、Non-goals、Implementation Notes、Acceptance Criteria、Test Plan、Completion Notes。
-- 这一步只创建任务工作台，不实现业务代码。
-```
-
-### 产物
-
-```text
-tasks/progress.md
-tasks/000-project-workflow/task-spec.md
-```
-
-### 人工检查点
-
-- `progress.md` 是否能让新 Agent 快速知道项目状态。
-- `000-project-workflow` 是否只是元任务，没有混入业务功能。
-- 后续任务编号规则是否清楚。
-
-------
-
-## 第 8 步：生成 `AGENTS.md`
-
-### 目的
-
-`AGENTS.md` 是 Agent 工作规约。
-
-它告诉 Agent：
-
-- 开始任务前读哪些文档。
-- 一次只做一个小任务。
-- 如何创建 task。
-- 什么不允许做。
-- 完成后如何验证和总结。
-
-### 提示词
-
-```text
-$grill-me 本项目采用敏捷开发，请阅读：
-- @mvp-scope.md
-- @product-backlog.md
-- @tech-design.md
-- @sprint-plan.md
-- @CONTEXT.md
-
-然后创建 `AGENTS.md`。
-
-要求：
-- 写成当前项目的 Agent 工作规约。
-- 明确开始任何任务前必须阅读哪些文档。
-- 明确一次只完成一个小任务。
-- 明确每个任务必须有 `tasks/<task-id>/task-spec.md`。
-- 明确任务结束前必须更新 `tasks/progress.md`。
-- 明确如果新需求超出 MVP scope，默认放入 backlog 或 deferred，不直接实现。
-- 写出项目技术约束、开发边界、验证原则。
-- 不要把单次任务写进 `AGENTS.md`。
-```
-
-### 产物
-
-```text
-AGENTS.md
-```
-
-### 人工检查点
-
-- 是否能约束 Agent 不扩大范围。
-- 是否说明任务目录规则。
-- 是否说明完成任务后必须更新进度。
-- 是否包含项目特有技术约束。
-- 是否没有把临时任务写成长期规则。
-
-------
-
-## 第 9 步：开始第一个真实 task
-
-### 目的
-
-从这里才开始让 Agent 写代码。
-
-第一个真实 task 应该来自当前 Sprint 中最小、最基础、依赖最少的 backlog item。
-
-### 提示词
-
-```text
-请开始第一个真实开发任务。
-
-要求：
-1. 先阅读：
-   - `docs/mvp-scope.md`
-   - `docs/product-backlog.md`
-   - `docs/tech-design.md`
-   - `docs/sprint-plan.md`
-   - `CONTEXT.md`
-   - `AGENTS.md`
-   - `tasks/progress.md`
-2. 从当前 Sprint 中选择一个最小可交付任务。
-3. 先创建 `tasks/<next-id>-<slug>/task-spec.md`，写清 Goal、Scope、Non-goals、Acceptance Criteria、Test Plan。
-4. 在写完 task-spec 后再开始实现。
-5. 不要合并多个 backlog item。
-6. 完成后运行合适的验证命令。
-7. 更新 `tasks/progress.md`。
-```
-
-### 产物
-
-```text
-tasks/001-.../task-spec.md
-业务代码或文档改动
-tasks/progress.md
-```
-
-### 人工检查点
-
-- task 是否足够小。
-- 是否能独立验收。
-- 是否没有混入多个 Sprint 目标。
-- 是否有验证方式。
-- 完成后是否更新 `progress.md`。
-
-------
-
-## ADR 什么时候写
-
-ADR 是 Architecture Decision Record，放在：
-
-```text
-docs/adr/
-```
-
-它只记录重大、长期、难以轻易反转的决策。
-
-适合写 ADR：
-
-- MVP 用 SQLite 还是 Postgres。
-- 第一版只做本地应用还是公网服务。
-- TTS 用系统命令还是本地模型。
-- 是否保存用户凭据。
-- 是否引入新的任务队列或消息系统。
-
-不适合写 ADR：
-
-- 新增一个普通 API。
-- 修一个 bug。
-- 调整一个按钮。
-- 增加一个测试。
-- 记录某次任务的实现步骤。
-
-### ADR prompt
-
-```text
-当前项目出现一个可能影响长期架构或产品边界的决策：
-
-[描述决策]
-
-请先阅读现有 `docs/` 和 `CONTEXT.md`，判断是否值得写 ADR。
-
-如果值得，请创建 `docs/adr/000X-<short-title>.md`。
-
-ADR 需要包含：
-- Status
-- Context
-- Decision
-- Consequences
-- Alternatives Considered
-
-如果不值得写 ADR，请说明原因，并建议放到哪个 task-spec 或设计文档中。
-```
-
-------
-
-## 专题详细设计什么时候写
-
-默认不要创建 `detailed-design.md`。
-
-只有遇到复杂专题时，才创建：
-
-```text
-docs/designs/<feature>.md
-```
-
-适合写专题详细设计：
-
-- 功能横跨多个 Sprint。
-- 涉及复杂状态机。
-- 涉及同步协议。
-- 涉及权限模型。
-- 涉及数据迁移。
-- 多个 Agent 或多人需要并行开发。
-
-不适合：
-
-- 一个小 API。
-- 一个简单页面。
-- 一个单文件修复。
-- 已经能在一个 task-spec 中说清楚的任务。
-
-------
-
-## 文档职责速查表
-
-| 文件 | 作用 | 不做什么 |
-| --- | --- | --- |
-| `docs/proposal.md` | 初始产品简报 | 不写完整技术方案 |
-| `docs/mvp-scope.md` | MVP 范围合同 | 不塞后续版本功能 |
-| `docs/product-backlog.md` | 产品需求池 | 不决定 Sprint 节奏 |
-| `docs/tech-design.md` | 最小技术方案和核心契约 | 不写全部实现细节 |
-| `CONTEXT.md` | 领域语言和上下文 | 不写任务计划 |
-| `docs/sprint-plan.md` | Sprint 交付节奏 | 不替代 backlog |
-| `AGENTS.md` | Agent 工作规约 | 不写单次任务 |
-| `tasks/progress.md` | 当前事实面板 | 不做需求源头 |
-| `tasks/<id>/task-spec.md` | 单次任务规格 | 不是 ADR |
-| `docs/adr/*.md` | 长期决策记录 | 不记录普通任务 |
-| `docs/designs/*.md` | 复杂专题详细设计 | 不默认创建 |
-
-------
 
 ## 常见错误
 
-### 错误 1：一上来就让 Agent 写代码
+### 一开始就写代码
 
-不推荐：
+先写 `proposal.md`，再写 `plan.md`，最后才进入 `tasks.md` 和实现。
 
-```text
-帮我做一个 AI 学习 App
-```
+### 把一个主题写成流程仓库
 
-推荐：
+默认只需要三个主题文件。文件越多，Agent 越容易读错 source of truth。
 
-```text
-请先不要写代码。请先根据我的想法生成 proposal.md 和 mvp-scope.md，让我确认第一版边界。
-```
+### 一个任务里塞多个目标
 
-### 错误 2：一个 task 包含多个 backlog item
+一个 `Task` 应该能独立完成、独立验证、独立更新 `Status`。
 
-不推荐：
+### 主题太大但继续加文件
 
-```text
-实现登录、支付、课程导入、播放器和部署。
-```
+复杂度过高时，拆成多个 `Topic`。不要默认增加额外流程文件。
 
-推荐：
+### 完成后不更新状态
 
-```text
-本次只实现 `MVP-001` 的服务骨架和健康检查。
-```
+每次实现后必须更新 `tasks.md`，至少说明：
 
-### 错误 3：把 `task-spec.md` 当 ADR
-
-`task-spec.md` 记录这次任务怎么做。
-
-ADR 记录项目以后为什么必须沿着某个方向走。
-
-### 错误 4：每个功能都写详细设计
-
-普通小任务直接写 `task-spec.md`。
-
-只有复杂专题才写 `docs/designs/*.md`。
-
-### 错误 5：任务完成后不更新 `progress.md`
-
-这样下一次打开项目时，Agent 不知道真实状态，只能重新猜。
-
-每次任务结束都应该更新：
-
-- 当前状态。
-- 已完成任务。
-- 当前任务。
-- 下一步。
-- 阻塞项。
-- 最近变更记录。
-
-### 错误 6：用生成命令替代项目文档
-
-`/init`、`/grill-with-docs`、`$grill-me`、ChatGPT 对话都是生成辅助。
-
-最终 source of truth 是仓库里的 Markdown：
-
-```text
-AGENTS.md
-CONTEXT.md
-docs/*.md
-tasks/**/*.md
-```
-
-------
+- 当前 `Status`。
+- 已完成什么。
+- 验证方式和结果。
+- 下一步是什么。
 
 ## 最终检查清单
 
-完成项目启动框架后，检查这些问题：
+- [ ] 是否只有一个清楚的 `Topic`。
+- [ ] `Goal` 是否能用几句话说明。
+- [ ] `Boundary` 是否写清做什么和不做什么。
+- [ ] `plan.md` 是否有清楚的 `Milestone`。
+- [ ] 当前 `Task` 是否足够小。
+- [ ] 每个 `Task` 是否有验证方式。
+- [ ] 完成后是否更新了 `Status`。
+- [ ] 如果主题太大，是否拆成了多个 `docs/<topic>/` 目录。
 
-- [ ] 是否先写清目标、边界和非目标。
-- [ ] 是否有长期规则文件，例如 `AGENTS.md`。
-- [ ] 是否有当前状态源，例如 `docs/agent-workflow.md`、`tasks/progress.md`、sprint plan 或 issue 面板。
-- [ ] 是否明确当前最小任务和下一步。
-- [ ] 是否明确验收方式。
-- [ ] 是否明确完成后要更新哪个状态源。
-- [ ] 如果使用完整 MVP 流程，是否已经补齐 proposal、scope、backlog、tech-design、CONTEXT、sprint-plan 和 tasks 工作台。
-- [ ] 如果只使用轻量方案，是否没有为了套模板创建多余文件。
-- [ ] 是否明确何时写 ADR 或 `docs/designs/*.md`。
-
-如果这些都满足，你就已经有了一个可以持续使用的 Agent 敏捷开发框架。
-
-------
+满足这些条件，就可以开始让 Agent 稳定推进开发。
