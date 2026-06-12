@@ -145,40 +145,7 @@
 
 ------
 
-## 第 0 步：准备项目和 Git checkpoint
-
-### 目的
-
-开始让 Agent 修改项目前，先有一个干净起点，方便回滚和对比。
-
-### 操作
-
-如果是新项目：
-
-```bash
-mkdir my-mvp
-cd my-mvp
-git init -b main
-```
-
-如果是已有项目：
-
-```bash
-git status --short
-```
-
-如果当前改动很重要，先提交或至少确认它们不是 Agent 本轮要覆盖的内容。
-
-### 检查点
-
-- 项目目录已经确定。
-- Git 状态清楚。
-- 你知道哪些文件是自己已有改动。
-- 后续 Agent 不应该随手覆盖未提交内容。
-
-------
-
-## 第 1 步：生成 `docs/proposal.md`
+## 第 1 步：生成 `proposal.md`
 
 ### 目的
 
@@ -202,7 +169,7 @@ $grill-me 我想[在这里用自然语言写你的产品想法]
 - 把它写成初始产品简报，而不是完整需求规格书。
 - 包含 Summary、Target Users、Problem、Proposed Solution、Key Requirements、Acceptance Criteria、Assumptions。
 - 明确第一版只解决什么核心问题。
-- 不要写技术实现细节，技术方案后面会放到 `docs/tech-design.md`。
+- 不要写技术实现细节。
 ```
 
 ### 产物
@@ -221,7 +188,7 @@ docs/proposal.md
 
 ------
 
-## 第 2 步：生成 `docs/mvp-scope.md`
+## 第 2 步：生成 `mvp-scope.md`
 
 ### 目的
 
@@ -241,7 +208,7 @@ $grill-me 本项目采用敏捷开发的方式，请阅读 `docs/proposal.md`，
 - 写出 MVP 验收标准。
 - 写出第一版迭代建议。
 - 明确哪些功能必须 deferred，不允许在第一版偷偷实现。
-- 不要写详细技术实现，技术方案后面放到 `docs/tech-design.md`。
+- 不要写详细技术实现。
 ```
 
 ### 产物
@@ -263,7 +230,7 @@ MVP 完成后不要删除 `mvp-scope.md`。它是 v1 的历史范围合同，用
 
 ------
 
-## 第 3 步：生成 `docs/product-backlog.md`
+## 第 3 步：生成 `product-backlog.md`
 
 ### 目的
 
@@ -278,7 +245,7 @@ MVP 完成后不要删除 `mvp-scope.md`。它是 v1 的历史范围合同，用
 ### 提示词
 
 ```text
-$grill-me 本项目采用敏捷开发，请阅读 `docs/proposal.md` 和 `docs/mvp-scope.md`，然后创建 `docs/product-backlog.md`。
+$grill-me 本项目采用敏捷开发，请阅读 @proposal.md 和 @mvp-scope.md，然后创建 product-backlog.md。
 
 要求：
 - 使用表格记录 backlog。
@@ -307,7 +274,7 @@ docs/product-backlog.md
 
 ------
 
-## 第 4 步：生成 `docs/tech-design.md`
+## 第 4 步：生成 `tech-design.md`
 
 ### 目的
 
@@ -323,11 +290,11 @@ docs/product-backlog.md
 
 ```text
 $grill-me 本项目采用敏捷开发，请阅读：
-- `docs/proposal.md`
-- `docs/mvp-scope.md`
-- `docs/product-backlog.md`
+- @proposal.md
+- @mvp-scope.md
+- @product-backlog.md
 
-然后创建 `docs/tech-design.md`。
+然后创建 `tech-design.md`。
 
 要求：
 - 写出最小技术方案，不要写成完整详细设计。
@@ -341,7 +308,7 @@ $grill-me 本项目采用敏捷开发，请阅读：
 ### 产物
 
 ```text
-docs/tech-design.md
+docs/xxx/tech-design.md
 ```
 
 ### 人工检查点
@@ -370,10 +337,10 @@ docs/tech-design.md
 
 ```text
 $grill-with-docs 本项目采用敏捷开发，请阅读：
-- `docs/proposal.md`
-- `docs/mvp-scope.md`
-- `docs/product-backlog.md`
-- `docs/tech-design.md`
+- @proposal.md
+- @mvp-scope.md
+- @product-backlog.md
+- @tech-design.md
 
 然后创建 `CONTEXT.md`。
 
@@ -410,7 +377,7 @@ CONTEXT.md
 
 ------
 
-## 第 6 步：生成 `docs/sprint-plan.md`
+## 第 6 步：生成 `sprint-plan.md`
 
 ### 目的
 
@@ -426,12 +393,12 @@ CONTEXT.md
 
 ```text
 $grill-me 本项目采用敏捷开发，请阅读：
-- `docs/mvp-scope.md`
-- `docs/product-backlog.md`
-- `docs/tech-design.md`
-- `CONTEXT.md`
+- @mvp-scope.md
+- @product-backlog.md
+- @tech-design.md
+- @CONTEXT.md
 
-然后创建 `docs/sprint-plan.md`。
+然后创建 `sprint-plan.md`。
 
 要求：
 - 把 MVP 拆成 3-5 个小 Sprint。
@@ -456,60 +423,7 @@ docs/sprint-plan.md
 
 ------
 
-## 第 7 步：生成 `AGENTS.md`
-
-### 目的
-
-`AGENTS.md` 是 Agent 工作规约。
-
-它告诉 Agent：
-
-- 开始任务前读哪些文档。
-- 一次只做一个小任务。
-- 如何创建 task。
-- 什么不允许做。
-- 完成后如何验证和总结。
-
-### 提示词
-
-```text
-$init 本项目采用敏捷开发，请阅读：
-- `docs/mvp-scope.md`
-- `docs/product-backlog.md`
-- `docs/tech-design.md`
-- `docs/sprint-plan.md`
-- `CONTEXT.md`
-
-然后创建 `AGENTS.md`。
-
-要求：
-- 写成当前项目的 Agent 工作规约。
-- 明确开始任何任务前必须阅读哪些文档。
-- 明确一次只完成一个小任务。
-- 明确每个任务必须有 `tasks/<task-id>/task-spec.md`。
-- 明确任务结束前必须更新 `tasks/progress.md`。
-- 明确如果新需求超出 MVP scope，默认放入 backlog 或 deferred，不直接实现。
-- 写出项目技术约束、开发边界、验证原则。
-- 不要把单次任务写进 `AGENTS.md`。
-```
-
-### 产物
-
-```text
-AGENTS.md
-```
-
-### 人工检查点
-
-- 是否能约束 Agent 不扩大范围。
-- 是否说明任务目录规则。
-- 是否说明完成任务后必须更新进度。
-- 是否包含项目特有技术约束。
-- 是否没有把临时任务写成长期规则。
-
-------
-
-## 第 8 步：初始化 `tasks/` 工作台
+## 第 7 步：初始化 `tasks/` 工作台
 
 ### 目的
 
@@ -562,6 +476,59 @@ tasks/000-project-workflow/task-spec.md
 - `progress.md` 是否能让新 Agent 快速知道项目状态。
 - `000-project-workflow` 是否只是元任务，没有混入业务功能。
 - 后续任务编号规则是否清楚。
+
+------
+
+## 第 8 步：生成 `AGENTS.md`
+
+### 目的
+
+`AGENTS.md` 是 Agent 工作规约。
+
+它告诉 Agent：
+
+- 开始任务前读哪些文档。
+- 一次只做一个小任务。
+- 如何创建 task。
+- 什么不允许做。
+- 完成后如何验证和总结。
+
+### 提示词
+
+```text
+$grill-me 本项目采用敏捷开发，请阅读：
+- @mvp-scope.md
+- @product-backlog.md
+- @tech-design.md
+- @sprint-plan.md
+- @CONTEXT.md
+
+然后创建 `AGENTS.md`。
+
+要求：
+- 写成当前项目的 Agent 工作规约。
+- 明确开始任何任务前必须阅读哪些文档。
+- 明确一次只完成一个小任务。
+- 明确每个任务必须有 `tasks/<task-id>/task-spec.md`。
+- 明确任务结束前必须更新 `tasks/progress.md`。
+- 明确如果新需求超出 MVP scope，默认放入 backlog 或 deferred，不直接实现。
+- 写出项目技术约束、开发边界、验证原则。
+- 不要把单次任务写进 `AGENTS.md`。
+```
+
+### 产物
+
+```text
+AGENTS.md
+```
+
+### 人工检查点
+
+- 是否能约束 Agent 不扩大范围。
+- 是否说明任务目录规则。
+- 是否说明完成任务后必须更新进度。
+- 是否包含项目特有技术约束。
+- 是否没有把临时任务写成长期规则。
 
 ------
 
