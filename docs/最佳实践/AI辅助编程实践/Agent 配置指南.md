@@ -6,7 +6,8 @@
 
 ## 基础工具
 
-- Claude Code：官网下载
+- Claude Code：
+  - 官网下载：npm install -g @anthropic-ai/claude-code@latest
 - Codex：官网下载
 - CC Switch（可选）：[官网下载](https://github.com/farion1231/cc-switch)
 

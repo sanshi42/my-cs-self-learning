@@ -1,5 +1,76 @@
 # Pycharm 相关工具的整理
 
+## 配置 FastAPI 的调试
+
+1. 把第二行左侧的 `script` 下拉框点开  
+   选择 **module** / **模块名称**。
+
+2. 右侧原来填 `/home/huanglei/workspace/my-agent/app/main.py` 的地方，改成：
+
+```text
+uvicorn
+```
+
+3. `脚本形参` 填：
+
+```text
+app.main:app --host 127.0.0.1 --port 8000
+```
+
+先不要加 `--reload`，调试断点更稳定。
+
+4. `工作目录(W)` 改成项目根目录：
+
+```text
+/home/huanglei/workspace/my-agent
+```
+
+不要用 `/home/huanglei/workspace/my-agent/app`。
+
+5. `环境变量(E)` 可以填：
+
+```text
+PYTHONUNBUFFERED=1;ENV=development
+```
+
+最后你的配置应该长这样：
+
+```text
+名称: main
+
+解释器:
+项目默认值 (uv (my-agent)) Python 3.13.11 ~/workspace/my-agent/.venv
+
+运行类型:
+module
+
+模块名称:
+uvicorn
+
+脚本形参:
+app.main:app --host 127.0.0.1 --port 8000
+
+工作目录:
+/home/huanglei/workspace/my-agent
+
+环境变量:
+PYTHONUNBUFFERED=1;ENV=development
+```
+
+然后点底部绿色小虫子 Debug 启动。启动后访问：
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+你要是想平时开发自动重启，可以再复制一个配置，把参数改成：
+
+```text
+app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+但真正单步调试时，推荐用不带 `--reload` 的那个。
+
 ## Python 代码格式化工具——Ruff
 
 > 由于blue 暂时没有维护了，并且不支持 Python3.11 的部分语法，而black不支持使用字符串的单引号表示方式，故改用 Ruff
